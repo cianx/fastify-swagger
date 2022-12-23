@@ -230,6 +230,7 @@ Some possible uses of this are:
 - add the `hide` flag on schema according to your own logic based on url & schema
 - altering the route url into something that's more suitable for the api spec
 - using different schemas such as [Joi](https://github.com/hapijs/joi) and transforming them to standard JSON schemas expected by this plugin
+- the http method is passed to the transform method for use in describing the operations, for example generating an Swagger operationId
 
 This option is available in `dynamic` mode only.
 
@@ -240,7 +241,7 @@ const convert = require('joi-to-json')
 
 await fastify.register(require('@fastify/swagger'), {
   swagger: { ... },
-  transform: ({ schema, url }) => {
+  transform: ({ method, schema, url }) => {
     const {
       params,
       body,

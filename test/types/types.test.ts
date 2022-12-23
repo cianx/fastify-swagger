@@ -29,7 +29,7 @@ const uiHooks: FastifySwaggerUiHooksOptions = {
 
 app.register(fastifySwagger);
 app.register(fastifySwagger, {});
-app.register(fastifySwagger, { transform: ({schema, url}) => ({
+app.register(fastifySwagger, { transform: ({ method, schema, url}) => ({
     schema: schema as unknown as JSONObject,
     url: url,
 })});
